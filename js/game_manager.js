@@ -5,6 +5,9 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.actuator       = new Actuator;
 
   this.startTiles     = 2;
+  this.moveAnimationTime = 130;
+  this.moveInProgress = false;
+  this.moveInProgressTimer = null;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
@@ -33,6 +36,12 @@ GameManager.prototype.isGameTerminated = function () {
 
 // Set up the game
 GameManager.prototype.setup = function () {
+  this.moveInProgress = false;
+  if (this.moveInProgressTimer) {
+    clearTimeout(this.moveInProgressTimer);
+    this.moveInProgressTimer = null;
+  }
+
   var previousState = this.storageManager.getGameState();
 
   // Reload the game from a previous game if present
@@ -132,6 +141,7 @@ GameManager.prototype.move = function (direction) {
   var self = this;
 
   if (this.isGameTerminated()) return; // Don't do anything if the game's over
+  if (this.moveInProgress) return;
 
   var cell, tile;
 
@@ -180,6 +190,7 @@ GameManager.prototype.move = function (direction) {
   });
 
   if (moved) {
+    this.moveInProgress = true;
     this.addRandomTile();
 
     if (!this.movesAvailable()) {
@@ -187,6 +198,10 @@ GameManager.prototype.move = function (direction) {
     }
 
     this.actuate();
+    this.moveInProgressTimer = setTimeout(function () {
+      self.moveInProgress = false;
+      self.moveInProgressTimer = null;
+    }, this.moveAnimationTime);
   }
 };
 
