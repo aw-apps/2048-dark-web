@@ -42,17 +42,18 @@ html, body {
   background: var(--page-bg);
   color: var(--text-color); }
 
-.heading:after {
-  content: "";
-  display: block;
-  clear: both; }
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px; }
 
 h1.title {
   font-size: 80px;
   font-weight: bold;
   margin: 0;
-  display: block;
-  float: left; }
+  display: block; }
 
 @-webkit-keyframes move-up {
   0% {
@@ -79,7 +80,10 @@ h1.title {
     top: -50px;
     opacity: 0; } }
 .scores-container {
-  float: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
   text-align: right; }
 
 .score-container, .best-container {
@@ -148,7 +152,7 @@ hr {
   margin-bottom: 30px; }
 
 .container {
-  width: 500px;
+  width: min(100%, 680px);
   margin: 0 auto; }
 
 @-webkit-keyframes fade-in {
@@ -170,7 +174,7 @@ hr {
   100% {
     opacity: 1; } }
 .game-container {
-  margin-top: 40px;
+  margin: 40px auto 0;
   position: relative;
   padding: 15px;
   cursor: default;
@@ -188,6 +192,10 @@ hr {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: min(100%, 760px); } }
   .game-container .game-message {
     display: none;
     position: absolute;
@@ -547,18 +555,27 @@ hr {
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards; }
 
-.above-game:after {
-  content: "";
-  display: block;
-  clear: both; }
+.above-game {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap; }
 
 .game-intro {
-  float: left;
-  line-height: 42px;
-  margin-bottom: 0; }
+  line-height: 1.4;
+  margin: 0;
+  flex: 1 1 300px;
+  min-width: 260px; }
+
+.above-game-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 0 0 auto; }
 
 .restart-button, .theme-toggle-button {
-  display: inline-block;
   background: var(--button-bg);
   border-radius: 3px;
   padding: 0 20px;
@@ -568,10 +585,7 @@ hr {
   line-height: 42px;
   display: block;
   text-align: center;
-  float: right; }
-
-.theme-toggle-button {
-  margin-right: 8px; }
+  white-space: nowrap; }
 
 .game-explanation {
   margin-top: 50px; }
@@ -600,12 +614,22 @@ hr {
   .heading {
     margin-bottom: 10px; }
 
+  .scores-container {
+    gap: 5px; }
+
   .game-intro {
     width: 100%;
     display: block;
     box-sizing: border-box;
     line-height: 1.65;
-    margin-bottom: 8px; }
+    margin-bottom: 8px;
+    min-width: 0;
+    flex-basis: 100%; }
+
+  .above-game-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0; }
 
   .restart-button {
     width: 48%;
@@ -619,8 +643,7 @@ hr {
     padding: 0;
     box-sizing: border-box;
     margin-top: 2px;
-    margin-right: 0;
-    float: left; }
+    margin-right: 0; }
 
   .game-container {
     margin-top: 17px;
