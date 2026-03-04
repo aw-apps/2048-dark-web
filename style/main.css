@@ -152,7 +152,7 @@ hr {
   margin-bottom: 30px; }
 
 .container {
-  width: 500px;
+  width: min(100%, 680px);
   margin: 0 auto; }
 
 @-webkit-keyframes fade-in {
@@ -174,7 +174,7 @@ hr {
   100% {
     opacity: 1; } }
 .game-container {
-  margin-top: 40px;
+  margin: 40px auto 0;
   position: relative;
   padding: 15px;
   cursor: default;
@@ -192,6 +192,10 @@ hr {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: min(100%, 760px); } }
   .game-container .game-message {
     display: none;
     position: absolute;
