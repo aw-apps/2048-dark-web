@@ -41,17 +41,27 @@ LocalStorageManager.prototype.localStorageSupported = function () {
 
 // Best score getters/setters
 LocalStorageManager.prototype.getBestScore = function () {
-  return this.storage.getItem(this.bestScoreKey) || 0;
+  var bestScore = parseInt(this.storage.getItem(this.bestScoreKey), 10);
+  return isNaN(bestScore) || bestScore < 0 ? 0 : bestScore;
 };
 
 LocalStorageManager.prototype.setBestScore = function (score) {
-  this.storage.setItem(this.bestScoreKey, score);
+  var nextScore = Math.max(0, parseInt(score, 10) || 0);
+  var currentBest = this.getBestScore();
+  this.storage.setItem(this.bestScoreKey, Math.max(currentBest, nextScore));
 };
 
 // Game state getters/setters and clearing
 LocalStorageManager.prototype.getGameState = function () {
   var stateJSON = this.storage.getItem(this.gameStateKey);
-  return stateJSON ? JSON.parse(stateJSON) : null;
+  if (!stateJSON) return null;
+
+  try {
+    return JSON.parse(stateJSON);
+  } catch (error) {
+    this.clearGameState();
+    return null;
+  }
 };
 
 LocalStorageManager.prototype.setGameState = function (gameState) {
