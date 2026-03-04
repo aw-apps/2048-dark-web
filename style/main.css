@@ -347,12 +347,13 @@ hr {
 
 .tile {
   position: absolute;
-  -webkit-transition: 100ms ease-in-out;
-  -moz-transition: 100ms ease-in-out;
-  transition: 100ms ease-in-out;
+  -webkit-transition: 130ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  -moz-transition: 130ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: 130ms cubic-bezier(0.22, 0.61, 0.36, 1);
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
-  transition-property: transform; }
+  transition-property: transform;
+  will-change: transform; }
   .tile .tile-inner {
     border-radius: 3px;
     background: var(--tile-base-bg);
@@ -476,9 +477,9 @@ hr {
     -ms-transform: scale(1);
     transform: scale(1); } }
 .tile-new .tile-inner {
-  -webkit-animation: appear 200ms ease 100ms;
-  -moz-animation: appear 200ms ease 100ms;
-  animation: appear 200ms ease 100ms;
+  -webkit-animation: appear 160ms ease-out 40ms;
+  -moz-animation: appear 160ms ease-out 40ms;
+  animation: appear 160ms ease-out 40ms;
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards; }
@@ -491,10 +492,10 @@ hr {
     transform: scale(0); }
 
   50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.12);
+    -moz-transform: scale(1.12);
+    -ms-transform: scale(1.12);
+    transform: scale(1.12); }
 
   100% {
     -webkit-transform: scale(1);
@@ -509,10 +510,10 @@ hr {
     transform: scale(0); }
 
   50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.12);
+    -moz-transform: scale(1.12);
+    -ms-transform: scale(1.12);
+    transform: scale(1.12); }
 
   100% {
     -webkit-transform: scale(1);
@@ -527,10 +528,10 @@ hr {
     transform: scale(0); }
 
   50% {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.12);
+    -moz-transform: scale(1.12);
+    -ms-transform: scale(1.12);
+    transform: scale(1.12); }
 
   100% {
     -webkit-transform: scale(1);
@@ -539,9 +540,9 @@ hr {
     transform: scale(1); } }
 .tile-merged .tile-inner {
   z-index: 20;
-  -webkit-animation: pop 200ms ease 100ms;
-  -moz-animation: pop 200ms ease 100ms;
-  animation: pop 200ms ease 100ms;
+  -webkit-animation: pop 180ms ease-out 40ms;
+  -moz-animation: pop 180ms ease-out 40ms;
+  animation: pop 180ms ease-out 40ms;
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards; }

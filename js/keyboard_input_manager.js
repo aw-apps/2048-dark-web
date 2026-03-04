@@ -74,12 +74,15 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
 
   // Respond to swipe events
-  var touchStartClientX, touchStartClientY;
+  var touchStartClientX = null;
+  var touchStartClientY = null;
   var gameContainer = document.getElementsByClassName("game-container")[0];
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
         event.targetTouches.length > 1) {
+      touchStartClientX = null;
+      touchStartClientY = null;
       return; // Ignore if touching with more than 1 finger
     }
 
@@ -114,16 +117,29 @@ KeyboardInputManager.prototype.listen = function () {
       touchEndClientY = event.changedTouches[0].clientY;
     }
 
+    if (touchStartClientX === null || touchStartClientY === null) {
+      return;
+    }
+
     var dx = touchEndClientX - touchStartClientX;
     var absDx = Math.abs(dx);
 
     var dy = touchEndClientY - touchStartClientY;
     var absDy = Math.abs(dy);
+    var swipeThreshold = Math.max(18, Math.round(gameContainer.clientWidth * 0.08));
+    var axisBias = 6;
 
-    if (Math.max(absDx, absDy) > 10) {
+    if (Math.max(absDx, absDy) > swipeThreshold) {
       // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      if (absDx > absDy + axisBias) {
+        self.emit("move", dx > 0 ? 1 : 3);
+      } else if (absDy > absDx + axisBias) {
+        self.emit("move", dy > 0 ? 2 : 0);
+      }
     }
+
+    touchStartClientX = null;
+    touchStartClientY = null;
   });
 };
 
