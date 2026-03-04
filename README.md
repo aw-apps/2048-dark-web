@@ -1,38 +1,41 @@
-# 2048
-A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone). 2048 was indirectly inspired by [Threes](https://asherv.com/threes/).
+# 2048 深色主題網頁版
 
-Made just for fun. [Play it here!](http://gabrielecirulli.github.io/2048/)
+一個可在瀏覽器直接遊玩的 2048 數字方塊遊戲，目標是提供流暢滑動動畫、深色主題切換與最高分紀錄。
 
-The official app can also be found on the [Play Store](https://play.google.com/store/apps/details?id=com.gabrielecirulli.app2048) and [App Store!](https://itunes.apple.com/us/app/2048-by-gabriele-cirulli/id868076805)
+## 功能特色
 
-### Contributions
+- 經典 2048 遊戲玩法（鍵盤方向鍵與手機滑動）
+- 深色主題（可切換並記住偏好）
+- 方塊滑動與合併動畫
+- 目前分數與最高分顯示（最高分持久化）
+- 純前端靜態網站，適合 GitHub Pages
 
-[Anna Harren](https://github.com/iirelu/) and [sigod](https://github.com/sigod) are maintainers for this repository.
+## 技術堆疊
 
-Other notable contributors:
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- localStorage（保存主題與最高分）
 
- - [TimPetricola](https://github.com/TimPetricola) added best score storage
- - [chrisprice](https://github.com/chrisprice) added custom code for swipe handling on mobile
- - [marcingajda](https://github.com/marcingajda) made swipes work on Windows Phone
- - [mgarciaisaia](https://github.com/mgarciaisaia) added support for Android 2.3
+## 本機執行
 
-Many thanks to [rayhaanj](https://github.com/rayhaanj), [Mechazawa](https://github.com/Mechazawa), [grant](https://github.com/grant), [remram44](https://github.com/remram44) and [ghoullier](https://github.com/ghoullier) for the many other good contributions.
+1. 直接開啟 `index.html`
+2. 或在專案根目錄啟動靜態伺服器：
 
-### Screenshot
+```bash
+python3 -m http.server 8000
+```
 
-<p align="center">
-  <img src="https://cloud.githubusercontent.com/assets/1175750/8614312/280e5dc2-26f1-11e5-9f1f-5891c3ca8b26.png" alt="Screenshot"/>
-</p>
+3. 於瀏覽器開啟 `http://localhost:8000`
 
-That screenshot is fake, by the way. I never reached 2048 :smile:
+## 部署
 
-## Contributing
-Changes and improvements are more than welcome! Feel free to fork and open a pull request. Please make your changes in a specific branch and request to pull into `master`! If you can, please make sure the game fully works before sending the PR, as that will help speed up the process.
+- 目標平台：GitHub Pages
+- 設定方式：Repository Settings → Pages → Deploy from branch（`main` / `/ (root)`）
+- 預期網址：`https://aw-apps.github.io/2048-dark-web/`
 
-You can find the same information in the [contributing guide.](https://github.com/gabrielecirulli/2048/blob/master/CONTRIBUTING.md)
+## 驗證重點
 
-## License
-2048 is licensed under the [MIT license.](https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt)
-
-## Donations
-I made this in my spare time, and it's hosted on GitHub (which means I don't have any hosting costs), but if you enjoyed the game and feel like buying me coffee, you can donate at my BTC address: `1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i`. Thank you very much!
+- 可以正常開始、移動、合併方塊
+- 深色主題切換後重新整理仍保留
+- 最高分在重新整理後仍保留
