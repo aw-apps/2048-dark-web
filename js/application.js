@@ -17,10 +17,18 @@ window.requestAnimationFrame(function () {
   applyTheme(savedTheme === "dark" ? "dark" : "light");
 
   if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
+    function toggleTheme() {
       var nextTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
       applyTheme(nextTheme);
       localStorage.setItem(storageKey, nextTheme);
+    }
+
+    themeToggle.addEventListener("click", toggleTheme);
+    themeToggle.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleTheme();
+      }
     });
   }
 
