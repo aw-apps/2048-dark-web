@@ -19,20 +19,27 @@
 
 ## 本機執行
 
-1. 直接開啟 `index.html`
-2. 或在專案根目錄啟動靜態伺服器：
+1. 直接開啟 `index.html`，或在專案根目錄啟動靜態伺服器：
 
 ```bash
 python3 -m http.server 8000
 ```
 
-3. 於瀏覽器開啟 `http://localhost:8000`
+2. 於瀏覽器開啟 `http://localhost:8000`
+
+## 功能檢查清單
+
+- [x] 鍵盤與滑動手勢可遊玩完整 2048 回合
+- [x] 深色主題可切換並在重新整理後保留
+- [x] 目前分數與最高分顯示，且最高分跨工作階段保留
+- [x] 方塊移動與合併動畫可視且流暢
 
 ## 部署
 
-- 目標平台：GitHub Pages
-- 設定方式：Repository Settings → Pages → Deploy from branch（`main` / `/ (root)`）
-- 預期網址：`https://aw-apps.github.io/2048-dark-web/`
+1. 進入 GitHub Repository 的 **Settings → Pages**。
+2. 在 **Build and deployment** 選擇 **Deploy from a branch**。
+3. Branch 選擇 `main`，資料夾選擇 `/ (root)` 後儲存。
+4. 等待部署完成後，站點網址格式為：`https://<owner>.github.io/2048-dark-web/`（本 repo 預期為 `https://aw-apps.github.io/2048-dark-web/`）。
 
 ## 驗證重點
 
